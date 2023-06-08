@@ -27,19 +27,25 @@ function createDynamicGalleryMarkup(galleryItems) {
 }
 
 function onGalleryClick(evt) {
-  const isGalleryImage = evt.target.classList.contains("gallery__image");
-  if (!isGalleryImage) {
-    return;
-  }
+  window.addEventListener("keydown", onEscKeyPress);
+  evt.preventDefault()
+  // const isGalleryImage = evt.target.classList.contains("gallery__image");
+  // if (!isGalleryImage) {
+  //   return;
+  // }
 
   const instance = basicLightbox.create(`<div class="modal">
-  <img src="${evt.target.dataset.source}" width="1000">
+  <img src="${evt.target.dataset.source}" width="1000" width="750">
   </div>
   `);
 
   instance.show();
+
 }
 
+function onEscKeyPress(event) {
+  console.log(event);
+}
 // Завдання 1 - галерея зображень
 
 // Створи галерею з можливістю кліку по її елементах і перегляду повнорозмірного зображення у модальному вікні.
