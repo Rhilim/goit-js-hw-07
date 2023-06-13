@@ -2,6 +2,7 @@ import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
 const createDynamicGallery = document.querySelector(".gallery");
+createDynamicGallery.style.list-Style = 'none';
 const picturesMarkup = createDynamicGalleryMarkup(galleryItems);
 createDynamicGallery.insertAdjacentHTML("beforeend", picturesMarkup);
 
