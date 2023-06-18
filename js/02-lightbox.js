@@ -1,15 +1,17 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
-const createDynamicGallery = document.querySelector(".gallery");
-createDynamicGallery.style.listStyle = 'none';
-const picturesMarkup = createDynamicGalleryMarkup(galleryItems);
-createDynamicGallery.insertAdjacentHTML("beforeend", picturesMarkup);
+const createDynamicGallery = document.querySelector('.gallery');
 
-createDynamicGallery.addEventListener("click", onGalleryClick);
+createDynamicGalleryMarkup();
 
-function createDynamicGalleryMarkup(galleryItems) {
-  return galleryItems
+let lightbox = new SimpleLightbox('.gallery a', {
+  captionDelay: 250,
+  captionsData: 'alt',
+});
+
+function createDynamicGalleryMarkup() {
+  const galleryItemsEl = galleryItems
     .map(({ preview, original, description }) => {
       return `<li class="gallery__item">
   <a class="gallery__link" href="${original}">
@@ -21,18 +23,12 @@ function createDynamicGalleryMarkup(galleryItems) {
 </li>
 `;
     })
-    .join("");
+    .join('');
+
+  createDynamicGallery.insertAdjacentHTML('beforeend', galleryItemsEl);
 }
 
-function onGalleryClick(evt) {
-  evt.preventDefault();
+createDynamicGallery.style.listStyle = 'none';
 
-  let wideImg = new SimpleLightbox(".gallery a", {
-    captions: true,
-    // captionSelector: "alt",
-    captionsData: "alt",
-    captionPosition: "bottom",
-    captionDelay: 250,
-  })
-  console.log(wideImg);
-}
+console.log(galleryItems);
+
