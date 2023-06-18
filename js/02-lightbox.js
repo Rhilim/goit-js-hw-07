@@ -2,7 +2,7 @@ import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
 const createDynamicGallery = document.querySelector(".gallery");
-createDynamicGallery.style.list-Style = 'none';
+createDynamicGallery.style.listStyle = 'none';
 const picturesMarkup = createDynamicGalleryMarkup(galleryItems);
 createDynamicGallery.insertAdjacentHTML("beforeend", picturesMarkup);
 
@@ -27,11 +27,12 @@ function createDynamicGalleryMarkup(galleryItems) {
 function onGalleryClick(evt) {
   evt.preventDefault();
 
-  let createDynamicGallery = new SimpleLightbox(".gallery a", {
+  let wideImg = new SimpleLightbox(".gallery a", {
     captions: true,
     // captionSelector: "alt",
     captionsData: "alt",
     captionPosition: "bottom",
     captionDelay: 250,
-  });
+  })
+  console.log(wideImg);
 }
